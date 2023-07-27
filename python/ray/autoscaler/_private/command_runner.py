@@ -195,7 +195,7 @@ class SSHCommandRunner(CommandRunnerInterface):
         if self.use_internal_ip:
             return self.provider.internal_ip(self.node_id)
         else:
-            return self.provider.external_ip(self.node_id)
+            return self.node_id #self.provider.external_ip(self.node_id)
 
     def _wait_for_ip(self, deadline):
         # if we have IP do not print waiting info
