@@ -123,7 +123,7 @@ class SSHOptions:
             # that case.
             "UserKnownHostsFile": os.devnull,
             # Try fewer extraneous key pairs.
-            "IdentitiesOnly": "yes",
+            "IdentitiesOnly": "no",
             # Abort if port forwarding fails (instead of just printing to
             # stderr).
             "ExitOnForwardFailure": "yes",
@@ -432,11 +432,11 @@ class SSHCommandRunner(CommandRunnerInterface):
 
     def remote_shell_command_str(self):
         if self.ssh_private_key:
-            return "ssh -o IdentitiesOnly=yes -i {} {}@{}\n".format(
+            return "ssh -o IdentitiesOnly=no -i {} {}@{}\n".format(
                 self.ssh_private_key, self.ssh_user, self.ssh_ip
             )
         else:
-            return "ssh -o IdentitiesOnly=yes {}@{}\n".format(
+            return "ssh -o IdentitiesOnly=no {}@{}\n".format(
                 self.ssh_user, self.ssh_ip
             )
 
